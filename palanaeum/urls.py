@@ -143,10 +143,13 @@ urlpatterns = [
 
     path('sitemap.xml', sitemap, {'sitemaps': {'events': EventSitemap}}, name='django.contrib.sitemaps.views.sitemap'),
     path('api-auth/', include('rest_framework.urls')),
-    path('api/', include(api_router.urls))
+    path('api/', include(api_router.urls)),
+    path('404test/', views.page_not_found, name='404')
 
 
 ] + static(project_settings.MEDIA_URL, document_root=project_settings.MEDIA_ROOT)
+
+handler404 = 'views.page_not_found'
 
 if settings.DEBUG:
     import debug_toolbar

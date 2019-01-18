@@ -353,7 +353,7 @@ def ajax_add_collection(request):
 
 def adv_search(request):
     """
-    Display an advances search form + search results.
+    Display an advanced search form + search results.
     """
     filters = init_filters(request)
 
@@ -484,3 +484,11 @@ def untranscribed_snippets(request):
     sources.sort(key=lambda source_count: source_count[0].event.date)
 
     return render(request, 'palanaeum/waiting_for_transcription.html', {'sources': sources})
+
+
+def page_not_found(request):
+    """
+    Displays a custom page for 404 errors.
+    """
+    print("page not found.")
+    return render(request, '404.html', status=404)
